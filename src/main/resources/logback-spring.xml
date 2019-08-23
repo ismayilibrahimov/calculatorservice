@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true" scan="true" scanPeriod="30 seconds">
+    <property name="LOG_PATH" value="logs" />
+    <timestamp key="timestamp-by-second" datePattern="yyyyMMdd'T'HHmmss"/>
+
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <appender name="Console-Appender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="File-Appender" class="ch.qos.logback.core.FileAppender">
+        <file>${LOG_PATH}/logfile-${timestamp-by-second}.log</file>
+        <encoder>
+            <pattern>%d{dd.MM HH:mm:ss} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="wrapperservice.contoller" level="info">
+        <appender-ref ref="File-Appender"/>
+        <appender-ref ref="Console-Appender"/>
+    </logger>
+    <logger name="wrapperservice.config" level="info">
+        <appender-ref ref="File-Appender"/>
+        <appender-ref ref="Console-Appender"/>
+    </logger>
+    <logger name="org.springframework.web" level="debug">
+        <appender-ref ref="Console-Appender"/>
+    </logger>
+
+</configuration>
