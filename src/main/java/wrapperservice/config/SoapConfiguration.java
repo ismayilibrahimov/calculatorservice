@@ -1,8 +1,9 @@
-package wrapperservice;
+package wrapperservice.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
+
 
 @Configuration
 public class SoapConfiguration {
@@ -15,7 +16,6 @@ public class SoapConfiguration {
 	}
 
 
-
 	@Bean
 	public CalculatorClient calculatorClient(Jaxb2Marshaller marshaller) {
 		CalculatorClient client = new CalculatorClient();
@@ -24,7 +24,5 @@ public class SoapConfiguration {
 		client.setUnmarshaller(marshaller);
 		return client;
 	}
-
-
 
 }
